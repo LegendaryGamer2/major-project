@@ -4,12 +4,12 @@ Im going to make a angry bird game
  
  ## Must Have's List
  
- - thing 1
- - thing 2
- - thing 3
+ - Slingshot  where the birds will come from
+ - Piggies that are the enemy
+ - Birds
  
  ## Nice to Have List
  
- - other thing 1
- - other thing 2
- - other thing 3
+ - Guiding lines
+ - Different Birds
+ - Abilities

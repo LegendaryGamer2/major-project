@@ -1,6 +1,6 @@
 # Major Project Proposal
 
- Add description of what I'm going to make...
+Im going to make a angry bird game
  
  ## Must Have's List
  

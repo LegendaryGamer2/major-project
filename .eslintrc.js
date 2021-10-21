@@ -34,6 +34,8 @@ module.exports = {
       "document": true,
       "window": true,  
       "console": true,
+      "Matter":true,
+      "Helpers":true,
 
       //allow timing functions in JS
       "setTimeout": true,

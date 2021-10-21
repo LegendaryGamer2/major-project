@@ -7,12 +7,14 @@
 
 
 let pig;
-let slingshot;
+let Engine = Matter.Engine,
+  Render = Matter.Render,
+  World = Matter.World,
+  Bodies = Matter.Bodies;
 
 
 function preload(){
   pig = loadImage("assets/pig.png");
-  slingshot = loadImage("assets/slingshot.png");
 }
 
 function setup() {
@@ -23,5 +25,4 @@ function draw() {
   background(255);
   imageMode(CENTER);
   image(pig, width/1.5, height/2, 100, 100);
-  image(slingshot, width/2, height/2, 82.75, 156.5);
 }

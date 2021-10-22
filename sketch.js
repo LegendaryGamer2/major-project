@@ -5,9 +5,16 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+let pigX = 200;
+let pigY = 200;
+let pigX2 = 200;
+let pigY2 = 400;
 
+let i = 0;
 let pig;
-let rotation;
+let rotation = 0;
+let moveRight;
+
 let Engine = Matter.Engine,
   Render = Matter.Render,
   World = Matter.World,
@@ -19,45 +26,50 @@ function preload(){
 }
 
 class Pig{
-  constructor(x, y, w, h, angle, image){
+  constructor(x, y, w, h, image, rotation){
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.a = angle;
+    this.a = 0;
     this.image = image;
-
-
+    this.rotation = rotation;
   }
-  display(){
+}
 
 
-  }
+function rolling(x, y, img, rotated){
+  translate(x, y);
+  rotate(PI / 180 * rotated);
+  imageMode(CENTER);
+  image(img, x - x, y - y, 30, 30);
 
+
+  
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
-function rotating(object, rotation){
-  push();
-  translate(width/2, height/2);
-  rotate(rotation);
-  imageMode(CENTER);
-  object;
-  
-  pop();
+function keyPressed(){
+
+  moveRight = true;
+
 
 }
 
 
-
 function draw() {
   background(255);
-  let box1 = rect(0, 0, 150, 150);
-  rotating(box1, 50);
- 
-
+  rolling(pigX, pigY, pig, rotation);
+  rotation += 1;
+  if (moveRight === true){
+    pigX +=1;
+    i += 1;
+    if (i === 200){
+      moveRight = false;
+    }
+  }
 
 }

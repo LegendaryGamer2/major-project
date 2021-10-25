@@ -13,7 +13,9 @@ let pigY2 = 400;
 let i = 0;
 let pig;
 let rotation = 0;
-let moveRight;
+let moveRight = false;
+
+
 
 let Engine = Matter.Engine,
   Render = Matter.Render,
@@ -54,8 +56,8 @@ function setup() {
 
 function keyPressed(){
 
-  moveRight = true;
-
+  moveRight = !moveRight;
+ 
 
 }
 
@@ -63,7 +65,9 @@ function keyPressed(){
 function draw() {
   background(255);
   rolling(pigX, pigY, pig, rotation);
+
   rotation += 1;
+  
   if (moveRight === true){
     pigX +=1;
     i += 1;

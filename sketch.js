@@ -14,30 +14,21 @@ let i = 0;
 let pig;
 let rotation = 0;
 let moveRight = false;
-
-
+let engine;
+let world;
+let ground;
+let boxes = [];
 
 let Engine = Matter.Engine,
   Render = Matter.Render,
   World = Matter.World,
   Bodies = Matter.Bodies;
-
+  
 
 function preload(){
   pig = loadImage("assets/pig.png");
 }
 
-class Pig{
-  constructor(x, y, w, h, image, rotation){
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.a = 0;
-    this.image = image;
-    this.rotation = rotation;
-  }
-}
 
 
 function rolling(x, y, img, rotated){
@@ -45,29 +36,36 @@ function rolling(x, y, img, rotated){
   rotate(PI / 180 * rotated);
   imageMode(CENTER);
   image(img, x - x, y - y, 30, 30);
-
-
-  
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  engine = Engine.create();
+  world = engine.world;
+  Engine.run(engine);
+  let options = {
+    isStatic: true
+  };
+  ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
+  World.add(world, ground);
+}
+
+function mousePressed(){
+  boxes.push(new Box(mouseX, mouseY, 50, 50, pig));
 }
 
 function keyPressed(){
-
   moveRight = !moveRight;
- 
-
 }
 
 
 function draw() {
   background(255);
-  rolling(pigX, pigY, pig, rotation);
 
-  rotation += 1;
-  
+  rect(0, height-20, width, 10);
+  for (let i = 0; i < boxes.length; i++){
+    boxes[i].show();
+  }
   if (moveRight === true){
     pigX +=1;
     i += 1;
@@ -75,5 +73,8 @@ function draw() {
       moveRight = false;
     }
   }
-
+  push();
+  rolling(pigX, pigY, pig, rotation);
+  rotation += 1;
+  pop();
 }

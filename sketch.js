@@ -19,7 +19,6 @@ let engine;
 let world;
 let vector;
 let ground;
-
 let boxes = [];
 
 
@@ -50,6 +49,7 @@ function setup() {
   };
 
   ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
+
   World.add(world, ground);
 }
 
@@ -67,10 +67,9 @@ function windowResized(){
 
 function draw() {
   background(255);
-
-  rect(0, height-20, width, 10);
+  // representation of the ground
+  rect(0, height-25, width, 10);
   for (let i = 0; i < boxes.length; i++){
-
     boxes[i].show();
   }
   if (moveRight === true){

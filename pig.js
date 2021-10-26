@@ -1,4 +1,4 @@
-function Box(x, y, w, h, img){
+function Pig(x, y, w, h, img){
   this.body = Bodies.rectangle(x, y, w, h);
   this.w = w;
   this.h = h;
@@ -12,10 +12,9 @@ function Box(x, y, w, h, img){
     let angle = this.body.angle;
     push();
     translate(pos.x, pos.y);
-    rectMode(CENTER);
     rotate(angle);
-    rect(0, 0, w, h);
     imageMode(CENTER);
+
     image(this.img, 0, 0, this.w, this.h); 
     pop();
   };

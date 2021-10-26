@@ -20,16 +20,13 @@ let ground;
 let boxes = [];
 
 let Engine = Matter.Engine,
-  Render = Matter.Render,
+  Runner = Matter.Runner,
   World = Matter.World,
   Bodies = Matter.Bodies;
-  
 
 function preload(){
   pig = loadImage("assets/pig.png");
 }
-
-
 
 function rolling(x, y, img, rotated){
   translate(x, y);
@@ -51,19 +48,19 @@ function setup() {
 }
 
 function mousePressed(){
-  boxes.push(new Box(mouseX, mouseY, 50, 50, pig));
+  boxes.push(new Pig(mouseX, mouseY, 50, 50, pig));
 }
 
 function keyPressed(){
   moveRight = !moveRight;
 }
 
-
 function draw() {
   background(255);
 
   rect(0, height-20, width, 10);
   for (let i = 0; i < boxes.length; i++){
+
     boxes[i].show();
   }
   if (moveRight === true){

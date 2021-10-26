@@ -5,6 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+
 let pigX = 200;
 let pigY = 200;
 let pigX2 = 200;
@@ -16,12 +17,15 @@ let rotation = 0;
 let moveRight = false;
 let engine;
 let world;
+let vector;
 let ground;
+
 let boxes = [];
 
+
 let Engine = Matter.Engine,
-  Runner = Matter.Runner,
   World = Matter.World,
+  Vector = Matter.Vector,
   Bodies = Matter.Bodies;
 
 function preload(){
@@ -39,20 +43,26 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
+  vector = Vector.create(width/2, height/2);
   Engine.run(engine);
   let options = {
     isStatic: true
   };
+
   ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
   World.add(world, ground);
 }
 
 function mousePressed(){
-  boxes.push(new Pig(mouseX, mouseY, 50, 50, pig));
+  boxes.push(new Pig(mouseX, mouseY, 30, pig));
 }
 
 function keyPressed(){
   moveRight = !moveRight;
+}
+
+function windowResized(){
+  setup();
 }
 
 function draw() {

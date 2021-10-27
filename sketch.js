@@ -19,7 +19,7 @@ let engine;
 let world;
 let vector;
 let ground;
-let boxes = [];
+let pigs = [];
 
 
 let Engine = Matter.Engine,
@@ -54,7 +54,7 @@ function setup() {
 }
 
 function mousePressed(){
-  boxes.push(new Pig(mouseX, mouseY, 30, pig));
+  pigs.push(new Pig(mouseX, mouseY, 30, pig));
 }
 
 function keyPressed(){
@@ -69,8 +69,8 @@ function draw() {
   background(255);
   // representation of the ground
   rect(0, height-25, width, 10);
-  for (let i = 0; i < boxes.length; i++){
-    boxes[i].show();
+  for (let i = 0; i < pigs.length; i++){
+    pigs[i].show();
   }
   if (moveRight === true){
     pigX +=1;

@@ -5,7 +5,7 @@ function Pig(x, y, r, img){
     force: { x: 0, y: 0 },
     frictionAir: 0,
     // restitution: 1.5,
-    inertia:1, 
+    inertia: 0, 
   }
   );
   this.r = r;

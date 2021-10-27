@@ -10,25 +10,28 @@ let pigX = 200;
 let pigY = 200;
 let pigX2 = 200;
 let pigY2 = 400;
-
+let ground;
 let i = 0;
 let pig;
+let wood;
 let rotation = 0;
 let moveRight = false;
 let engine;
 let world;
 let vector;
-let ground;
 let pigs = [];
-
+let boxes = [];
 
 let Engine = Matter.Engine,
   World = Matter.World,
   Vector = Matter.Vector,
-  Bodies = Matter.Bodies;
+  Bodies = Matter.Bodies,
+  Body = Matter.Body,
+  Composites = Matter.Composite;
 
 function preload(){
   pig = loadImage("assets/pig.png");
+  wood = loadImage("assets/wood.png");
 }
 
 function rolling(x, y, img, rotated){
@@ -47,14 +50,17 @@ function setup() {
   let options = {
     isStatic: true
   };
-
   ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
-
   World.add(world, ground);
 }
 
 function mousePressed(){
-  pigs.push(new Pig(mouseX, mouseY, 30, pig));
+  if (key === "e"){
+    pigs.push(new Pig(mouseX, mouseY, 30, pig));
+  }
+  else if (key === "q"){
+    boxes.push(new Box(mouseX, mouseY, 20, 20, wood));
+  }
 }
 
 function keyPressed(){
@@ -71,13 +77,12 @@ function draw() {
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();
+    
   }
-  if (moveRight === true){
-    pigX +=1;
-    i += 1;
-    if (i === 200){
-      moveRight = false;
-    }
+  for (let i = 0; i < boxes.length; i++){
+    boxes[i].show();
+
+    boxes[i].slowDown();
   }
   push();
   rolling(pigX, pigY, pig, rotation);

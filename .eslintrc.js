@@ -36,6 +36,8 @@ module.exports = {
       "console": true,
       "Matter":true,
       "Helpers":true,
+      "Bodies": true,
+      "World": true,
 
       //allow timing functions in JS
       "setTimeout": true,

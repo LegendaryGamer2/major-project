@@ -27,8 +27,9 @@ let Engine = Matter.Engine,
   Vector = Matter.Vector,
   Bodies = Matter.Bodies,
   Body = Matter.Body,
-  Composites = Matter.Composite;
-
+  Composites = Matter.Composite,
+  MouseConstraint=Matter.MouseConstraint,
+  Mouse= Matter.Mouse;
 function preload(){
   pig = loadImage("assets/pig.png");
   wood = loadImage("assets/wood.png");
@@ -59,7 +60,7 @@ function mousePressed(){
     pigs.push(new Pig(mouseX, mouseY, 30, pig));
   }
   else if (key === "q"){
-    boxes.push(new Box(mouseX, mouseY, 20, 20, wood));
+    boxes.push(new Box(mouseX, mouseY, 50, 50, wood));
   }
 }
 

@@ -1,6 +1,6 @@
 function Pig(x, y, r, img){
   this.body = Bodies.circle(x, y, r, {
-    // friction is how easily it moves and force is how fast it is being moved in a direction between -1 and 1 and anymore than 2 friction air crashes the browser
+    // the properties of the pig being created
     friction: 1,
     force: { x: 0, y: 0 },
     frictionAir: 0,

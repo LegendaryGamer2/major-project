@@ -1,11 +1,12 @@
-function Box(x, y, w, h, img){
+function Box(x, y, w, h, img, stuck){
   this.body = Bodies.rectangle(x, y, w, h, {
-    // friction is how easily it moves and force is how fast it is being moved in a direction between -1 and 1 and anymore than 2 friction air crashes the browser
+    // the properties of the pig being created
     friction: 1,
     force: { x: 0, y: 0},
     frictionAir: 0,
     density: 100,
     inertia: 0, 
+    isStatic: false,
   }
   );
   this.x = x;
@@ -27,7 +28,6 @@ function Box(x, y, w, h, img){
     rotate(angle);
     imageMode(CENTER);
     image(this.img, 0, 0, this.w, this.h); 
-    
     pop();
   };
 }

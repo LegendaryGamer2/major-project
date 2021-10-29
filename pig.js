@@ -2,11 +2,11 @@ function Pig(x, y, r, img){
   this.body = Bodies.circle(x, y, r, {
     // the properties of the pig being created
     friction: 1,
-    force: { x: 0, y: 0 },
+    force: { x: 0, y: 0.5 },
     frictionAir: 0,
     // restitution: 1.5,
     inertia: 0, 
-    density: 1,
+    density: 10,
   }
   );
   this.r = r;

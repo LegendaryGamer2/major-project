@@ -1,6 +1,6 @@
 function Bird(x, y, w, h, img){
   this.body = Bodies.rectangle(x, y, w, h, {
-    // friction is how easily it moves and force is how fast it is being moved in a direction between -1 and 1 and anymore than 2 friction air crashes the browser
+  // friction is how easily it moves and force is how fast it is being moved in a direction between -1 and 1 and anymore than 2 friction air crashes the browser
     friction: 1,
     force: { x: 0.1, y: 0},
     frictionAir: 0,
@@ -8,6 +8,7 @@ function Bird(x, y, w, h, img){
     inertia: 0, 
   }
   );
+
   this.x = x;
   this.y = y;
   this.w = w;

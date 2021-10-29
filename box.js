@@ -1,14 +1,16 @@
-function Box(x, y, w, h, img, stuck){
-  this.body = Bodies.rectangle(x, y, w, h, {
-    // the properties of the pig being created
-    friction: 1,
-    force: { x: 0, y: 0},
-    frictionAir: 0,
-    density: 100,
-    inertia: 0, 
-    isStatic: stuck,
+function Box(x, y, w, h, img, stuck, mat){
+  if (mat === "wood"){
+    this.body = Bodies.rectangle(x, y, w, h, {
+      // the properties of the pig being created
+      friction: 1,
+      force: { x: 0, y: 0},
+      frictionAir: 0,
+      density: 100,
+      inertia: 0, 
+      isStatic: stuck,
+    }
+    );
   }
-  );
   this.x = x;
   this.y = y;
   this.w = w;

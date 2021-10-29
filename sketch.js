@@ -6,8 +6,8 @@
 // - describe what you did to take this project "above and beyond"
 
 
-let pigX = 200;
-let pigY = 200;
+let pigX = 100;
+let pigY = 100;
 let pigX2 = 200;
 let pigY2 = 400;
 let ground;
@@ -21,6 +21,10 @@ let world;
 let vector;
 let pigs = [];
 let boxes = [];
+let spot1, spot2, spot3, spot4;
+let level = 1;
+let boxXY;
+let step = 0;
 
 let Engine = Matter.Engine,
   World = Matter.World,
@@ -53,31 +57,65 @@ function setup() {
   };
   ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
   World.add(world, ground);
+  building();
+  building();
 }
 
 function mousePressed(){
   if (key === "e"){
-    pigs.push(new Pig(mouseX, mouseY, 30, pig));
+    pigs.push(new Pig(mouseX, mouseY, 40, pig));
   }
   else if (key === "q"){
-    boxes.push(new Box(mouseX, mouseY, 50, 50, wood, true));
+    step = 0;
+
   }
   else if (key === "b"){
-    boxes.push(new Bird(mouseX, mouseY, 50, 50, wood, true));
+    boxes.push(new Bird(mouseX, mouseY, 100, 100, wood, true));
   }
 }
 
-function keyPressed(){
-  moveRight = !moveRight;
-}
-
-function windowResized(){
-  setup();
+function building(){
+  if (step === 0){
+    boxXY = giveValues("wood");
+    for(let y = 0; y < boxXY.length; y++){
+      for(let x = 0; x < boxXY[y].length; x++){
+        if(x === 0){
+          spot1 = boxXY[y][x];
+        }
+        else if(x === 1){
+          spot2 = boxXY[y][x];
+        }
+        else if(x === 2){
+          spot3 = boxXY[y][x];
+        }
+        else if(x === 3){
+          spot4 = boxXY[y][x];
+        }
+      }
+      boxes.push(new Box(spot1, spot2, spot3, spot4, wood, false, "wood"));
+    }
+    step = 1;
+  }
+  else if (step === 1){
+    boxXY = giveValues("pig");
+    for(let y = 0; y < boxXY.length; y++){
+      for(let x = 0; x < boxXY[y].length; x++){
+        if(x === 0){
+          spot1 = boxXY[y][x];
+        }
+        else if(x === 1){
+          spot2 = boxXY[y][x];
+        }
+      }
+      pigs.push(new Pig(spot1, spot2, 40, pig));
+    }
+  }
 }
 
 function draw() {
   background(255);
   // representation of the ground
+  
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();

@@ -60,7 +60,10 @@ function mousePressed(){
     pigs.push(new Pig(mouseX, mouseY, 30, pig));
   }
   else if (key === "q"){
-    boxes.push(new Box(mouseX, mouseY, 50, 50, wood));
+    boxes.push(new Box(mouseX, mouseY, 50, 50, wood, true));
+  }
+  else if (key === "b"){
+    boxes.push(new Bird(mouseX, mouseY, 50, 50, wood, true));
   }
 }
 

@@ -6,7 +6,7 @@ function Box(x, y, w, h, img, stuck){
     frictionAir: 0,
     density: 100,
     inertia: 0, 
-    isStatic: false,
+    isStatic: stuck,
   }
   );
   this.x = x;

@@ -1,4 +1,4 @@
-function Box(x, y, w, h, img){
+function Bird(x, y, w, h, img){
   this.body = Bodies.rectangle(x, y, w, h, {
     // friction is how easily it moves and force is how fast it is being moved in a direction between -1 and 1 and anymore than 2 friction air crashes the browser
     friction: 1,
@@ -15,8 +15,10 @@ function Box(x, y, w, h, img){
   this.img = img;
   World.add(world, this.body);
   
+  let speedx = -0.0009;
+
   this.slowDown = function(){
-    this.body.force = {x: -0.01 , y:0};
+    this.body.force = {x: -0.0009 , y: 0.0006};
   
   
   };

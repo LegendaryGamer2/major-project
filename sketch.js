@@ -62,15 +62,8 @@ function setup() {
 }
 
 function mousePressed(){
-  if (key === "e"){
-    pigs.push(new Pig(mouseX, mouseY, 40, pig));
-  }
-  else if (key === "q"){
-    step = 0;
-
-  }
-  else if (key === "b"){
-    boxes.push(new Bird(mouseX, mouseY, 100, 100, wood, true));
+  if (key === "b"){
+    boxes.push(new Bird(mouseX, mouseY, 50, wood, true));
   }
 }
 

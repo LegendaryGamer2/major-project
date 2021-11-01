@@ -25,6 +25,8 @@ let spot1, spot2, spot3, spot4;
 let level = 1;
 let boxXY;
 let step = 0;
+let mConstraint;
+
 
 let Engine = Matter.Engine,
   World = Matter.World,
@@ -34,9 +36,11 @@ let Engine = Matter.Engine,
   Composites = Matter.Composite,
   MouseConstraint=Matter.MouseConstraint,
   Mouse= Matter.Mouse;
+
 function preload(){
   pig = loadImage("assets/pig.png");
   wood = loadImage("assets/wood.png");
+  slingShot = loadImage("assets/slingshot.png");
 }
 
 function rolling(x, y, img, rotated){
@@ -48,15 +52,27 @@ function rolling(x, y, img, rotated){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  // if (windowWidth > windowHeight){
+  //   createCanvas(windowHeight, windowHeight);
+  // }
+  // else {
+  //   createCanvas(windowWidth, windowWidth);
+  // }
   engine = Engine.create();
   world = engine.world;
   vector = Vector.create(width/2, height/2);
   Engine.run(engine);
-  let options = {
-    isStatic: true
-  };
-  ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, options);
+  ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, {isStatic: true});
   World.add(world, ground);
+  World.add(world, ground);
+  let canvasMouse = Mouse.create(canvas.elt);
+  canvasMouse.pixelRatio = pixelDensity();
+  let options = {
+    mouse: canvasMouse
+
+  };
+  mConstraint = MouseConstraint.create(engine, options);
+  World.add(world, mConstraint);
   building();
   building();
 }
@@ -85,7 +101,7 @@ function building(){
           spot4 = boxXY[y][x];
         }
       }
-      boxes.push(new Box(spot1, spot2, spot3, spot4, wood, false, "wood"));
+      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, false));
     }
     step = 1;
   }
@@ -99,10 +115,18 @@ function building(){
         else if(x === 1){
           spot2 = boxXY[y][x];
         }
+        else if(x === 2){
+          spot3 = boxXY[y][x];
+        }
       }
-      pigs.push(new Pig(spot1, spot2, 40, pig));
+      pigs.push(new Pig(spot1, spot2, spot3, pig));
     }
+    step = 2;
   }
+}
+
+function windowResized(){
+  setup();
 }
 
 function draw() {

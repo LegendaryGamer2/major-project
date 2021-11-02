@@ -136,7 +136,7 @@ function draw() {
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();
-    
+    pigs[i].fall();
   }
   for (let i = 0; i < boxes.length; i++){
     boxes[i].show();

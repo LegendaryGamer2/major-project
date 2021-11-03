@@ -1,10 +1,11 @@
-function Wood(x, y, w, h, img, stuck, dens){
+function Wood(x, y, w, h, img, dens){
   
   this.body = Bodies.rectangle(x, y, w, h, {
     // the properties of the wood being created
     friction: 1,
-    force: { x: 0, y: 0},
-    density: dens,
+    force: { x: 0, y: -0.01},
+    density: 100,
+    frictionAir: dens,
     // inertia: 0, 
     isStatic: false,
   }

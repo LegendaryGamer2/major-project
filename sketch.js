@@ -77,7 +77,7 @@ function setup() {
 function building(){
   if (step === 0){
     boxXY = giveValues("wood");
-    for(let y = 0; y < boxXY.length; y++){
+    for(let y = 0; y < boxXY.length-1; y++){
       for(let x = 0; x < boxXY[y].length; x++){
         if(x === 0){
           spot1 = boxXY[y][x];
@@ -95,13 +95,13 @@ function building(){
           spot5 = boxXY[y][x];
         }
       }
-      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, false, spot5));
+      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, spot5));
     }
     step = 1;
   }
   else if (step === 1){
     boxXY = giveValues("pig");
-    for(let y = 0; y < boxXY.length; y++){
+    for(let y = 0; y < boxXY.length-1; y++){
       for(let x = 0; x < boxXY[y].length; x++){
         if(x === 0){
           spot1 = boxXY[y][x];
@@ -126,10 +126,10 @@ function windowResized(){
 function draw() {
   background(255);
   // representation of the ground
-  
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();
+    // pigs[i].forcedown();
   }
   for (let i = 0; i < boxes.length; i++){
     boxes[i].show();

@@ -5,7 +5,7 @@ function Wood(x, y, w, h, img, stuck, mat){
     friction: 1,
     force: { x: 0, y: 0},
     frictionAir: 0,
-    density: 10,
+    density: 100,
     inertia: 0, 
     isStatic: stuck,
   }

@@ -3,7 +3,7 @@ function Pig(x, y, r, img){
     // the properties of the pig being created
     friction: 1,
     force: { x: 0, y: 1 },
-    frictionAir: 1,
+    frictionAir: 0.1,
     // restitution: 1.5,
     inertia: 0, 
     density: 10,

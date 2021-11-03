@@ -21,12 +21,14 @@ let world;
 let vector;
 let pigs = [];
 let boxes = [];
-let spot1, spot2, spot3, spot4;
+let spot1, spot2, spot3, spot4, spot5;
 let level = 1;
 let boxXY;
 let step = 0;
 let mConstraint;
-
+let slingShot;
+let ifHasTouched = 0;
+let counter = 0;
 
 let Engine = Matter.Engine,
   World = Matter.World,
@@ -51,13 +53,7 @@ function rolling(x, y, img, rotated){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // if (windowWidth > windowHeight){
-  //   createCanvas(windowHeight, windowHeight);
-  // }
-  // else {
-  //   createCanvas(windowWidth, windowWidth);
-  // }
+  let canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
   vector = Vector.create(width/2, height/2);
@@ -65,6 +61,8 @@ function setup() {
   ground = Bodies.rectangle(0, height-20, windowWidth * 2, 10, {isStatic: true});
   World.add(world, ground);
   World.add(world, ground);
+  building();
+  building();
   let canvasMouse = Mouse.create(canvas.elt);
   canvasMouse.pixelRatio = pixelDensity();
   let options = {
@@ -73,15 +71,8 @@ function setup() {
   };
   mConstraint = MouseConstraint.create(engine, options);
   World.add(world, mConstraint);
-  building();
-  building();
 }
 
-function mousePressed(){
-  if (key === "b"){
-    boxes.push(new Bird(mouseX, mouseY, 50, wood, true));
-  }
-}
 
 function building(){
   if (step === 0){
@@ -100,8 +91,11 @@ function building(){
         else if(x === 3){
           spot4 = boxXY[y][x];
         }
+        else if(x === 4){
+          spot5 = boxXY[y][x];
+        }
       }
-      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, false));
+      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, false, spot5));
     }
     step = 1;
   }
@@ -136,12 +130,10 @@ function draw() {
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();
-    pigs[i].fall();
   }
   for (let i = 0; i < boxes.length; i++){
     boxes[i].show();
-
-    boxes[i].slowDown();
+    
   }
   push();
   rolling(pigX, pigY, pig, rotation);

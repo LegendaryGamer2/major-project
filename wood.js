@@ -1,27 +1,20 @@
-function Wood(x, y, w, h, img, stuck, mat){
+function Wood(x, y, w, h, img, stuck, dens){
   
   this.body = Bodies.rectangle(x, y, w, h, {
-    // the properties of the pig being created
+    // the properties of the wood being created
     friction: 1,
     force: { x: 0, y: 0},
-    frictionAir: 0,
-    density: 100,
-    inertia: 0, 
-    isStatic: stuck,
+    density: dens,
+    // inertia: 0, 
+    isStatic: false,
   }
   );
-  
   this.x = x;
   this.y = y;
   this.w = w;
   this.h = h;
   this.img = img;
   World.add(world, this.body);
-
-  this.slowDown = function(){
-    // Body.setVelocity(this.body, {x: 0, y: 0});
-  
-  };
   this.show = function() {
     let pos = this.body.position;
     let angle = this.body.angle;

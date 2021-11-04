@@ -77,7 +77,7 @@ function setup() {
 function building(){
   if (step === 0){
     boxXY = giveValues("wood");
-    for(let y = 0; y < boxXY.length-1; y++){
+    for(let y = 0; y < boxXY.length; y++){
       for(let x = 0; x < boxXY[y].length; x++){
         if(x === 0){
           spot1 = boxXY[y][x];
@@ -91,17 +91,14 @@ function building(){
         else if(x === 3){
           spot4 = boxXY[y][x];
         }
-        else if(x === 4){
-          spot5 = boxXY[y][x];
-        }
       }
-      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, spot5));
+      boxes.push(new Wood(spot1, spot2, spot3/2, spot4/2, wood, 3));
     }
     step = 1;
   }
   else if (step === 1){
     boxXY = giveValues("pig");
-    for(let y = 0; y < boxXY.length-1; y++){
+    for(let y = 0; y < boxXY.length; y++){
       for(let x = 0; x < boxXY[y].length; x++){
         if(x === 0){
           spot1 = boxXY[y][x];
@@ -113,7 +110,7 @@ function building(){
           spot3 = boxXY[y][x];
         }
       }
-      pigs.push(new Pig(spot1, spot2, spot3, pig));
+      pigs.push(new Pig(spot1, spot2, spot3, pig, 3));
     }
     step = 2;
   }
@@ -123,17 +120,25 @@ function windowResized(){
   setup();
 }
 
+function mousePressed(){
+  boxXY = giveValues("wood");
+  for (let y  = 0; y <= boxXY.length; y++){
+    console.log("i ran");
+    boxXY[y].removal();
+    boxes.splice(y, 1);
+  }
+} 
+
+
 function draw() {
   background(255);
   // representation of the ground
   rect(0, height-25, width, 10);
   for (let i = 0; i < pigs.length; i++){
     pigs[i].show();
-    // pigs[i].forcedown();
   }
   for (let i = 0; i < boxes.length; i++){
-    boxes[i].show();
-    
+    boxes[i].show();  
   }
   push();
   rolling(pigX, pigY, pig, rotation);

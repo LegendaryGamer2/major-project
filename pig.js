@@ -1,4 +1,4 @@
-function Pig(x, y, r, img){
+function Pig(x, y, r, img, health){
   this.body = Bodies.circle(x, y, r, {
     // the properties of the pig being created
     friction: 1,
@@ -12,11 +12,8 @@ function Pig(x, y, r, img){
   this.x = x;
   this.y = y;
   this.img = img;
+  this.health = health;
   World.add(world, this.body);
-
-  // this.forcedown = function(){
-  //   Body.applyForce(this.body, { x: 0, y: 0}, { x: 0, y: 0.001});
-  // };
 
   this.show = function() {
     let pos = this.body.position;

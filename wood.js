@@ -1,11 +1,9 @@
-function Wood(x, y, w, h, img, dens){
+function Wood(x, y, w, h, img, health){
   
   this.body = Bodies.rectangle(x, y, w, h, {
     // the properties of the wood being created
     friction: 1,
-    force: { x: 0, y: -0.01},
     density: 100,
-    frictionAir: dens,
     // inertia: 0, 
     isStatic: false,
   }
@@ -15,7 +13,13 @@ function Wood(x, y, w, h, img, dens){
   this.w = w;
   this.h = h;
   this.img = img;
+  this.health = health;
   World.add(world, this.body);
+
+  this.removal = function(){
+    World.remove(world, this.body);
+  };
+
   this.show = function() {
     let pos = this.body.position;
     let angle = this.body.angle;

@@ -1,7 +1,9 @@
 # Beta Testing
 
 ## Tester 1
-- stuff to change
+- add a start screen with instructions
+- add different materials
 
-# Person 2
-- other things to change
+# Tester 2
+- add a start screen
+- add more levels

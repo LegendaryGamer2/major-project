@@ -1,4 +1,4 @@
-// Angry Bird Game
+// Angry Bird Fan Game
 // Tamoor Ali Ahmed
 // Date
 //

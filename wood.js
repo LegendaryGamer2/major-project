@@ -16,11 +16,22 @@ function Wood(x, y, w, h, img, health){
   this.health = health;
   World.add(world, this.body);
 
-  this.removal = function(){
+  this.removal = function(){// removes the object
     World.remove(world, this.body);
   };
 
-  this.show = function() {
+  this.hit = function(){// checks if the piece of wood has been hit
+    let pos = this.body.position;
+    if(mouseX >= pos.x - this.w/2 && mouseX <= pos.x + this.w/2 && mouseY >= pos.y - this.h/2 && mouseY <= pos.y + this.h/2){
+      return true;
+    }
+    else{
+      return false;
+    }
+    
+  };
+
+  this.show = function() {//displays the object
     let pos = this.body.position;
     let angle = this.body.angle;
     push();

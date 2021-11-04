@@ -1,6 +1,6 @@
 # Beta Testing
 
-## Person 1
+## Tester 1
 - stuff to change
 
 # Person 2

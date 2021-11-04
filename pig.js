@@ -15,7 +15,15 @@ function Pig(x, y, r, img, health){
   this.health = health;
   World.add(world, this.body);
 
-  this.show = function() {
+  this.kill = function() { // kills the pig if it moves too fast
+    if (this.body.speed > 2.1){
+      World.remove(world, this.body);
+      return true;
+    }
+  };
+  
+
+  this.show = function() {// displays the pigs
     let pos = this.body.position;
     let angle = this.body.angle;
     push();

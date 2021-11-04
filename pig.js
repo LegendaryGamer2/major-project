@@ -16,7 +16,7 @@ function Pig(x, y, r, img, health){
   World.add(world, this.body);
 
   this.kill = function() { // kills the pig if it moves too fast
-    if (this.body.speed > 59){
+    if (this.body.speed > 1.9){
       World.remove(world, this.body);
       return true;
     }

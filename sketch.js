@@ -22,7 +22,7 @@ let hit = false;
 let tapped = 0;
 let tries = 2;
 let backdrop;
-
+let sizing;
 
 let Engine = Matter.Engine,
   World = Matter.World,
@@ -81,14 +81,17 @@ function keyPressed(){// turns on level 1
 function draw() {
   background(backdrop);
   if (level === 0){
-    textSize(52);
+    sizing = windowWidth/30;
+    textSize(sizing);
     text("Angry Birds Fan Game", width/3, windowHeight/5);
-    textSize(30);
-    text("You must make the blocks of wood fall on the pig or squish it to win the game and to start press spacebar" , width/5, windowHeight /3);
+    sizing = windowWidth/60;
+    textSize(sizing);
+    text("You must make the blocks of wood fall on the pig or squish it to win the game and to start press spacebar" , 0 + width/10, windowHeight /3);
   }
   else if (level === 2){
-    textSize(32);
-    text("You Win", windowWidth/2, windowHeight/2);
+    sizing = windowWidth/60 * 4;
+    textSize(sizing);
+    text("You Win", windowWidth/2 - sizing, windowHeight/2);
   }
   // representation of the ground
   rect(0, height-25, width, 10);

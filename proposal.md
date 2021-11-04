@@ -4,12 +4,11 @@ Im going to make a angry bird game
  
  ## Must Have's List
  
- - Slingshot  where the birds will come from
+ - proper pig death
  - Piggies that are the enemy
- - Birds
+ - proper structures
  
  ## Nice to Have List
  
- - Guiding lines
- - Different Birds
  - Abilities
+ - different levels

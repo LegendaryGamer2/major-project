@@ -21,7 +21,7 @@ let counter = 0;
 let hit = false;
 let tapped = 0;
 let tries = 2;
-
+let backdrop;
 
 
 let Engine = Matter.Engine,
@@ -36,7 +36,7 @@ let Engine = Matter.Engine,
 function preload(){
   pig = loadImage("assets/pig.png");
   wood = loadImage("assets/wood.png");
-
+  backdrop = loadImage("assets/backgroundpic.jpg");
 }
 
 function setup() {
@@ -79,7 +79,7 @@ function keyPressed(){// turns on level 1
 }
 
 function draw() {
-  background(255);
+  background(backdrop);
   if (level === 0){
     textSize(52);
     text("Angry Birds Fan Game", width/3, windowHeight/5);

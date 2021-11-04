@@ -22,13 +22,7 @@ function Wood(x, y, w, h, img, health){
 
   this.hit = function(){// checks if the piece of wood has been hit
     let pos = this.body.position;
-    if(mouseX >= pos.x - this.w/2 && mouseX <= pos.x + this.w/2 && mouseY >= pos.y - this.h/2 && mouseY <= pos.y + this.h/2){
-      return true;
-    }
-    else{
-      return false;
-    }
-    
+    return mouseX >= pos.x - this.w/2 && mouseX <= pos.x + this.w/2 && mouseY >= pos.y - this.h/2 && mouseY <= pos.y + this.h/2;
   };
 
   this.show = function() {//displays the object

@@ -17,7 +17,6 @@ let level = 0;
 let boxXY;
 let step = 0;
 let switchOn = 0;
-let counter = 0;
 let hit = false;
 let tapped = 0;
 let tries = 2;
@@ -62,7 +61,6 @@ function windowResized(){
 function mouseClicked(){// your number of tries to defeat all the pigs
   for(let y = 0; y < boxes.length; y++){
     if (boxes[y].hit() && tries !== 0){
-      console.log("hit");
       boxes[y].removal();
       boxes.splice(y, 1);
       tries -= 1;

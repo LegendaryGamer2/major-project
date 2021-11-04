@@ -12,6 +12,6 @@ function giveValues(item){
       [width/1.5  - 650, height - 170, realSize, realHeight], [width/1.5 - 350, height - 170, realSize, realHeight], [width/1.5 - 500, height - 340, realSize * 13, realHeight/4]]; // top block it goes left pillar, right pillar, floor, roof 
   }
   else if (item === "pig"){// setting the values of the pigs
-    return [[width/1.5 - 350, height - 35, realSize/4], [width/1.5 - 650, height - 35, realSize/4], [width/1.5 - 500, height - 540, realSize/4]];// right pig, left pig, top pig
+    return [[width/1.5 - 350, height - 35, realSize/4], [width/1.5 - 650, height - 35, realSize/4], [width/1.5 - 500, height - 520, realSize/4]];// right pig, left pig, top pig
   }
 }
